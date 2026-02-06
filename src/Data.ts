@@ -13,7 +13,7 @@ type DataState = {
 
 export const Data = create<DataState>((set, get) => ({
   ticks: 0,
-  max: 255,
+  max: 500,
   rate: .001,
   useGlide: true,
   selectionRadius: 100,

@@ -7,6 +7,7 @@ import { useMouseInputData, InitMouseInput } from "./Util.ts"
 
 export default function App() {
   //begin circle spawning logic + glide pickup logic
+  //subscribe to zustand data values
   const addValue = Data((s) => s.addValue);
   const value = Data((s) => s.value);
   const useGlide = Data((s) => s.useGlide);
@@ -14,13 +15,17 @@ export default function App() {
   const max = Data((s) => s.max);
   const rate = Data((s) => s.rate);
 
+  //subscribe to zustand mouse input values
   const mouseDown = useMouseInputData((s) => s.mouseDown);
   const mouseX = useMouseInputData((s) => s.mouseX);
   const mouseY = useMouseInputData((s) => s.mouseY);
 
+  //subscribe to zustand circle handler values
   const objects = CircleHandler((s) => s.objects);
   const trySpawn = CircleHandler((s) => s.trySpawn);
   const removeCircle = CircleHandler((s) => s.removeCircle);
+  
+  //render logic
   useEffect(() => {
     const interval = setInterval(() => {
       trySpawn(max, rate);
