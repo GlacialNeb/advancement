@@ -24,7 +24,7 @@ export default function App() {
   const objects = CircleHandler((s) => s.objects);
   const trySpawn = CircleHandler((s) => s.trySpawn);
   const removeCircle = CircleHandler((s) => s.removeCircle);
-  
+
   //render logic
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,11 +46,15 @@ export default function App() {
     return () => clearInterval(interval);
   }, [mouseDown, mouseX, mouseY, objects, removeCircle, addValue, selectionRadius, trySpawn, useGlide, max, rate]);
 
+  //cancel dragging ew annoying
+  window.ondragstart = function () { return false; }
+
   //return app object
   const size = 500;
   return (
     <div>
       <p>Value: {Format(value)}</p>
+      <p>Circles: {objects.length}/{max} {1 / rate}/s</p>
       <InitMouseInput />
       <Stage width={size} height={size} id="circleCanvas">
         <Layer>
