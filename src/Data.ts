@@ -3,12 +3,20 @@ import Decimal from "break_infinity.js";
 
 type DataState = {
   ticks: number;
+  max: number;
+  rate: number;
+  useGlide: boolean;
+  selectionRadius: number;
   value: Decimal;
   addValue: (add: number) => void;
 };
 
 export const Data = create<DataState>((set, get) => ({
   ticks: 0,
+  max: 255,
+  rate: .001,
+  useGlide: true,
+  selectionRadius: 100,
   value: new Decimal(0),
 
   addValue: (add) => {
