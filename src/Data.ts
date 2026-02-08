@@ -5,7 +5,6 @@ type DataState = {
   ticks: number;
   max: number;
   rate: number;
-  useGlide: boolean;
   selectionRadius: number;
 
   //actual currencies and stuff
@@ -19,7 +18,6 @@ export const Data = create<DataState>((set, get) => ({
   ticks: 0,
   max: 500,
   rate: 1/60,
-  useGlide: true,
   selectionRadius: 100,
 
   value: new Decimal(0),
