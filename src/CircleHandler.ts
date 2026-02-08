@@ -10,8 +10,8 @@ interface Circles {
     objects: Circle[];
     lastSpawn: number;
 
-    trySpawn: (max: number, rate: number) => void;
     removeCircle: (id: number) => void;
+    trySpawn: (max: number, rate: number) => void;
 }
 
 export const CircleHandler = create<Circles>((set, get) => ({
@@ -20,6 +20,7 @@ export const CircleHandler = create<Circles>((set, get) => ({
 
     trySpawn: (max, rate) => {
         const { objects, lastSpawn } = get();
+
         const now = Date.now() / 1000;
 
         if (objects.length >= max) return;
